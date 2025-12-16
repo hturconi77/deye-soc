@@ -5,7 +5,7 @@ from flask import Flask, jsonify
 
 app = Flask(__name__)
 
-DEYE_BASE = "https://developer.deyecloud.com"
+DEYE_BASE = "https://developer.deyecloud.com/emea"
 
 APP_ID = os.environ["DEYE_APP_ID"]
 APP_SECRET = os.environ["DEYE_APP_SECRET"]
