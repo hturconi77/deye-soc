@@ -28,12 +28,24 @@ def get_token():
         },
         timeout=10
     )
-    r.raise_for_status()
+
     data = r.json()
 
-    token_cache["token"] = data["accessToken"]
+    # Caso correcto (Deye real)
+    if "data" in data and "accessToken" in data["data"]:
+        token = data["data"]["accessToken"]
+
+    # Caso alternativo (raro pero posible)
+    elif "accessToken" in data:
+        token = data["accessToken"]
+
+    else:
+        raise Exception(f"Token not found. Full response: {data}")
+
+    token_cache["token"] = token
     token_cache["expires"] = time.time() + 7000
-    return token_cache["token"]
+    return token
+
 
 def get_soc():
     headers = {"Authorization": f"Bearer {get_token()}"}
