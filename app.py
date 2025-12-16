@@ -31,14 +31,15 @@ def get_token():
 
     data = r.json()
 
-    # Caso correcto (Deye real)
+    # Imprime el error para depurar mejor
+    if "code" in data:
+        print(f"Error en el login: {data['msg']} (Código: {data['code']})")
+
+    # Si el token no está en la respuesta
     if "data" in data and "accessToken" in data["data"]:
         token = data["data"]["accessToken"]
-
-    # Caso alternativo (raro pero posible)
     elif "accessToken" in data:
         token = data["accessToken"]
-
     else:
         raise Exception(f"Token not found. Full response: {data}")
 
