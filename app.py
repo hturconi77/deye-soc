@@ -19,7 +19,7 @@ def get_token():
         return token_cache["token"]
 
     r = requests.post(
-        f"{DEYE_BASE}/v1.0/account/token?appId=202512132224010",
+        f"{DEYE_BASE}/v1.0/account/token",
         json={
             "email": EMAIL,
             "password": PASSWORD,
