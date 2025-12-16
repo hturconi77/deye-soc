@@ -23,7 +23,7 @@ def get_token():
         json={
             "email": EMAIL,
             "password": PASSWORD,
-            "appId": 202512132224010,
+            "appId": APP_ID,
             "appSecret": APP_SECRET
         },
         timeout=10
